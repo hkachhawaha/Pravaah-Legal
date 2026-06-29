@@ -1,101 +1,322 @@
 ---
 ---
 
-<div class="contact-form glass rounded">
+<div class="contact-form-container">
 
-    <form id="contactForm" novalidate>
+    <div class="contact-form glass rounded">
 
-        <div class="form-group">
+        <form id="contactForm" novalidate>
 
-            <label for="name">Full Name</label>
+            <div class="form-group">
 
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Himalaya Kachhawaha"
-                required />
+                <label for="name">Full Name <span class="required">*</span></label>
 
-            <span class="error-msg" id="nameError">Name is required.</span>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Himalaya Kachhawaha"
+                    required />
+
+                <span class="error-msg" id="nameError">Name is required.</span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="email">Business Email <span class="required">*</span></label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="info@pravaahlegal.com"
+                    required />
+
+                <span class="error-msg" id="emailError">Please enter a valid email.</span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91 98765 43210" />
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="service">Type of Service <span class="required">*</span></label>
+
+                <select id="service" name="service" required>
+
+                    <option value="">Select Service Area</option>
+                    <option value="Immigration Law">Immigration Law</option>
+                    <option value="Corporate Legal">Corporate Legal</option>
+                    <option value="Contract Drafting">Contract Drafting</option>
+                    <option value="Compliance">Compliance</option>
+                    <option value="Legal Process Outsourcing">Legal Process Outsourcing</option>
+                    <option value="Legal Research">Legal Research</option>
+
+                </select>
+
+                <span class="error-msg" id="serviceError">Please select a service area.</span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="subject">Subject <span class="required">*</span></label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Case Assessment Request"
+                    required />
+
+                <span class="error-msg" id="subjectError">Subject is required.</span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="message">Your Message <span class="required">*</span></label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="How can our legal consulting team assist you?"
+                    required></textarea>
+
+                <span class="error-msg" id="messageError">Message cannot be empty.</span>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary form-btn">
+
+                Send Inquiry
+
+            </button>
+
+            <div class="form-status" id="formStatus"></div>
+
+        </form>
+
+    </div>
+
+    <!-- Tabular Result Section -->
+    <div class="contact-results glass rounded" id="contactResults" style="display: none;">
+
+        <h3>Submitted Inquiry Details</h3>
+
+        <div class="table-container">
+
+            <table class="results-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Field</th>
+                        <th>Submitted Data</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Full Name</td>
+                        <td id="resName"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Email</td>
+                        <td id="resEmail"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Phone Number</td>
+                        <td id="resPhone"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Type of Service</td>
+                        <td id="resService"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Subject</td>
+                        <td id="resSubject"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Message</td>
+                        <td id="resMessage"></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
 
         </div>
 
-        <div class="form-group">
+        <div class="results-action">
 
-            <label for="email">Business Email</label>
+            <button id="viewDetailsBtn" class="btn btn-outline">
 
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="info@pravaahlegal.com"
-                required />
+                View Details
 
-            <span class="error-msg" id="emailError">Please enter a valid email.</span>
+            </button>
 
         </div>
 
-        <div class="form-group">
+    </div>
 
-            <label for="subject">Subject</label>
+    <!-- Modal Overlay Window -->
+    <div class="contact-modal" id="contactModal" style="display: none;">
 
-            <select id="subject" name="subject" required>
+        <div class="contact-modal__overlay"></div>
 
-                <option value="">Select Service Area</option>
-                <option value="immigration">Business Immigration</option>
-                <option value="corporate">Corporate Legal Advisory</option>
-                <option value="lpo">Legal Process Outsourcing</option>
-                <option value="contracts">Contract Lifecycle Management</option>
-                <option value="compliance">Compliance & Risk Advisory</option>
+        <div class="contact-modal__content glass rounded">
 
-            </select>
+            <div class="contact-modal__header">
 
-            <span class="error-msg" id="subjectError">Please select a subject area.</span>
+                <h2>Inquiry Summary</h2>
+
+                <button class="contact-modal__close" id="modalClose" aria-label="Close modal">&times;</button>
+
+            </div>
+
+            <div class="contact-modal__body">
+
+                <div class="summary-item">
+
+                    <span class="summary-label">Name</span>
+
+                    <p class="summary-value" id="modName"></p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span class="summary-label">Email</span>
+
+                    <p class="summary-value" id="modEmail"></p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span class="summary-label">Phone</span>
+
+                    <p class="summary-value" id="modPhone"></p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span class="summary-label">Service</span>
+
+                    <p class="summary-value" id="modService"></p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span class="summary-label">Subject</span>
+
+                    <p class="summary-value" id="modSubject"></p>
+
+                </div>
+
+                <div class="summary-item summary-item--full">
+
+                    <span class="summary-label">Message</span>
+
+                    <p class="summary-value summary-value--quote" id="modMessage"></p>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="form-group">
-
-            <label for="message">Your Message</label>
-
-            <textarea
-                id="message"
-                name="message"
-                rows="6"
-                placeholder="How can our legal consulting team assist you?"
-                required></textarea>
-
-            <span class="error-msg" id="messageError">Message cannot be empty.</span>
-
-        </div>
-
-        <button
-            type="submit"
-            class="btn btn-primary form-btn">
-
-            Send Message
-
-        </button>
-
-        <div class="form-status" id="formStatus"></div>
-
-    </form>
+    </div>
 
 </div>
 
 <script>
+interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  subject: string;
+  message: string;
+}
+
 const form = document.getElementById("contactForm") as HTMLFormElement | null;
 const nameInput = document.getElementById("name") as HTMLInputElement | null;
 const emailInput = document.getElementById("email") as HTMLInputElement | null;
-const subjectInput = document.getElementById("subject") as HTMLSelectElement | null;
+const phoneInput = document.getElementById("phone") as HTMLInputElement | null;
+const serviceInput = document.getElementById("service") as HTMLSelectElement | null;
+const subjectInput = document.getElementById("subject") as HTMLInputElement | null;
 const messageInput = document.getElementById("message") as HTMLTextAreaElement | null;
 const statusDiv = document.getElementById("formStatus") as HTMLDivElement | null;
+
+// Results container & fields
+const resultsDiv = document.getElementById("contactResults") as HTMLDivElement | null;
+const resName = document.getElementById("resName");
+const resEmail = document.getElementById("resEmail");
+const resPhone = document.getElementById("resPhone");
+const resService = document.getElementById("resService");
+const resSubject = document.getElementById("resSubject");
+const resMessage = document.getElementById("resMessage");
+
+// Modal elements
+const modal = document.getElementById("contactModal") as HTMLDivElement | null;
+const modalClose = document.getElementById("modalClose");
+const modalOverlay = document.querySelector(".contact-modal__overlay");
+const viewDetailsBtn = document.getElementById("viewDetailsBtn");
+
+const modName = document.getElementById("modName");
+const modEmail = document.getElementById("modEmail");
+const modPhone = document.getElementById("modPhone");
+const modService = document.getElementById("modService");
+const modSubject = document.getElementById("modSubject");
+const modMessage = document.getElementById("modMessage");
+
+// Keep last submitted values in memory for modal viewing
+let lastSubmittedData: FormValues | null = null;
 
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
   let isValid = true;
 
-  // Reset errors
+  // Reset error displays
   document.querySelectorAll(".error-msg").forEach((el) => {
     el.classList.remove("active");
   });
@@ -117,8 +338,14 @@ form?.addEventListener("submit", (e) => {
     isValid = false;
   }
 
+  // Service Validation
+  if (!serviceInput?.value) {
+    document.getElementById("serviceError")?.classList.add("active");
+    isValid = false;
+  }
+
   // Subject Validation
-  if (!subjectInput?.value) {
+  if (!subjectInput?.value.trim()) {
     document.getElementById("subjectError")?.classList.add("active");
     isValid = false;
   }
@@ -129,17 +356,84 @@ form?.addEventListener("submit", (e) => {
     isValid = false;
   }
 
-  if (isValid) {
+  if (isValid && nameInput && emailInput && serviceInput && subjectInput && messageInput) {
+    // Populate dataset
+    lastSubmittedData = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput?.value.trim() || "Not provided",
+      service: serviceInput.value,
+      subject: subjectInput.value.trim(),
+      message: messageInput.value.trim()
+    };
+
+    // Update dynamic results table nodes
+    if (resName) resName.textContent = lastSubmittedData.name;
+    if (resEmail) resEmail.textContent = lastSubmittedData.email;
+    if (resPhone) resPhone.textContent = lastSubmittedData.phone;
+    if (resService) resService.textContent = lastSubmittedData.service;
+    if (resSubject) resSubject.textContent = lastSubmittedData.subject;
+    if (resMessage) resMessage.textContent = lastSubmittedData.message;
+
+    // Show Results block
+    if (resultsDiv) {
+      resultsDiv.style.display = "block";
+    }
+
+    // Scroll to results
+    resultsDiv?.scrollIntoView({ behavior: 'smooth' });
+
+    // Update success banner
     if (statusDiv) {
       statusDiv.classList.add("success");
-      statusDiv.textContent = "Thank you! Your inquiry has been sent to our consulting team.";
+      statusDiv.textContent = "Thank you! Your inquiry details are saved below.";
     }
+
     form.reset();
   }
 });
+
+// Modal view handlers
+viewDetailsBtn?.addEventListener("click", () => {
+  if (!lastSubmittedData) return;
+
+  // Fill modal fields
+  if (modName) modName.textContent = lastSubmittedData.name;
+  if (modEmail) modEmail.textContent = lastSubmittedData.email;
+  if (modPhone) modPhone.textContent = lastSubmittedData.phone;
+  if (modService) modService.textContent = lastSubmittedData.service;
+  if (modSubject) modSubject.textContent = lastSubmittedData.subject;
+  if (modMessage) modMessage.textContent = lastSubmittedData.message;
+
+  // Display modal
+  if (modal) {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+  }
+});
+
+const closeModal = () => {
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = ""; // Restore background scroll
+  }
+};
+
+modalClose?.addEventListener("click", closeModal);
+modalOverlay?.addEventListener("click", closeModal);
 </script>
 
 <style lang="scss">
+
+.contact-form-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3rem;
+
+}
 
 .form-group{
 
@@ -160,6 +454,22 @@ label{
     font-size:.95rem;
 
     color:white;
+
+}
+
+.required{
+
+    color:var(--gold);
+
+}
+
+.optional{
+
+    color:var(--muted);
+
+    font-size:.85rem;
+
+    font-weight:400;
 
 }
 
@@ -196,6 +506,14 @@ textarea:focus{
     outline:none;
 
     background:rgba(255,255,255,.05);
+
+}
+
+select option {
+
+    background:#111;
+
+    color:white;
 
 }
 
@@ -238,6 +556,242 @@ textarea:focus{
 .form-status.success{
 
     color:var(--gold);
+
+}
+
+/* Results Section Styling */
+
+.contact-results{
+
+    padding:3rem;
+
+    border:1px solid var(--border);
+
+}
+
+.contact-results h3{
+
+    font-size:1.4rem;
+
+    margin-bottom:1.5rem;
+
+    border-bottom:1px solid var(--border);
+
+    padding-bottom:10px;
+
+}
+
+.table-container{
+
+    overflow-x:auto;
+
+}
+
+.results-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    text-align:left;
+
+    font-size:.95rem;
+
+}
+
+.results-table th,
+
+.results-table td{
+
+    padding:12px 18px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.results-table th{
+
+    color:white;
+
+    background:rgba(255,255,255,.01);
+
+}
+
+.results-table td:first-child{
+
+    font-weight:600;
+
+    color:var(--gold);
+
+    width:35%;
+
+}
+
+.results-table td:last-child{
+
+    color:var(--text);
+
+}
+
+.results-action{
+
+    margin-top:2rem;
+
+    text-align:center;
+
+}
+
+/* Modal Overlay Styling */
+
+.contact-modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:10000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+}
+
+.contact-modal__overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.85);
+
+    backdrop-filter:blur(10px);
+
+}
+
+.contact-modal__content{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:600px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    z-index:2;
+
+    padding:3rem;
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+}
+
+.contact-modal__header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:2rem;
+
+    border-bottom:1px solid var(--border);
+
+    padding-bottom:15px;
+
+}
+
+.contact-modal__close{
+
+    background:none;
+
+    border:none;
+
+    color:var(--muted);
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.contact-modal__close:hover{
+
+    color:var(--gold);
+
+}
+
+.contact-modal__body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+
+}
+
+.summary-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.summary-label{
+
+    font-size:.8rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:.1em;
+
+    color:var(--gold);
+
+    font-weight:600;
+
+}
+
+.summary-value{
+
+    font-size:1.05rem;
+
+    color:white;
+
+}
+
+.summary-value--quote{
+
+    background:rgba(255,255,255,.02);
+
+    border-left:2px solid var(--gold);
+
+    padding:12px 18px;
+
+    border-radius:0 8px 8px 0;
+
+    line-height:1.6;
 
 }
 
