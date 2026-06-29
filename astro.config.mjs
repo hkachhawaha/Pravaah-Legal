@@ -5,7 +5,7 @@ export default defineConfig({
 
     site: "https://pravaahlegal.com",
 
-    base: "/Pravaah-Legal",
+    base: "/Pravaah-Legal/",
 
     integrations: [
 
