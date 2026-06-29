@@ -1,0 +1,123 @@
+---
+import "@styles/globals.scss";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Pravaah | Legal Consulting",
+  description =
+    "Premium Legal Consulting for Immigration, Corporate Law and Legal Process Outsourcing."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0" />
+
+<title>{title}</title>
+
+<meta
+name="description"
+content={description} />
+
+<meta
+name="theme-color"
+content="#0b0b0b" />
+
+<meta
+property="og:title"
+content={title} />
+
+<meta
+property="og:description"
+content={description} />
+
+<meta
+property="og:type"
+content="website" />
+
+<meta
+property="og:image"
+content="/images/og-cover.jpg" />
+
+<meta
+property="og:url"
+content="https://pravaahlegal.com" />
+
+<link
+rel="icon"
+href="/favicon.svg" />
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+rel="stylesheet">
+
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Pravaah Legal",
+  "image": "https://pravaahlegal.com/images/og-cover.jpg",
+  "url": "https://pravaahlegal.com",
+  "telephone": "+91XXXXXXXXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jaipur City Center",
+    "addressLocality": "Jaipur",
+    "addressRegion": "Rajasthan",
+    "postalCode": "302001",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "26.9124",
+    "longitude": "75.7873"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<slot />
+
+<script>
+  import "@scripts/lenis-smooth";
+  import "@scripts/gsap-core";
+</script>
+
+</body>
+
+</html>

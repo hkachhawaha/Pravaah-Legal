@@ -1,0 +1,105 @@
+---
+const services = [
+  {
+    title: "Immigration Law",
+    description: "Expert guidance on business visas, corporate immigration programs, and global mobility workflows including H-1B, L-1, O-1, and PERM applications.",
+    icon: "fa-solid fa-plane-departure"
+  },
+  {
+    title: "Corporate Legal Consulting",
+    description: "Comprehensive advisory on business formation, governance, corporate structuring, and transaction support for emerging enterprises.",
+    icon: "fa-solid fa-briefcase"
+  },
+  {
+    title: "Legal Process Outsourcing",
+    description: "High-efficiency outsourcing models for document reviews, corporate records filing, case filings, and legal research requirements.",
+    icon: "fa-solid fa-gears"
+  },
+  {
+    title: "Contract Lifecycle Management",
+    description: "Professional drafting, redlining, negotiation assistance, and systematic tracking of corporate agreements and service contracts.",
+    icon: "fa-solid fa-file-signature"
+  },
+  {
+    title: "Compliance Advisory",
+    description: "Structuring regulatory risk parameters, corporate compliance matrices, audit defenses, and ongoing corporate governance reviews.",
+    icon: "fa-solid fa-shield-halved"
+  }
+];
+---
+
+<section class="services-preview">
+
+    <div class="container">
+
+        <div class="services-preview__header text-center">
+
+            <span class="services-preview__eyebrow">
+
+                WHAT WE SPECIALIZE IN
+
+            </span>
+
+            <h2>
+
+                Premium Legal Consulting Services
+
+            </h2>
+
+            <p class="services-preview__subtitle">
+
+                Providing strategic advice and operational leverage for modern companies, international law firms, and growth startups.
+
+            </p>
+
+        </div>
+
+        <div class="services-preview__grid">
+
+            {
+                services.map(service => (
+
+                    <div class="service-card hover-lift">
+
+                        <div class="service-card__icon-wrapper">
+
+                            <i class={service.icon}></i>
+
+                        </div>
+
+                        <h3>
+
+                            {service.title}
+
+                        </h3>
+
+                        <p>
+
+                            {service.description}
+
+                        </p>
+
+                        <a
+                            href="/services"
+                            class="service-card__link">
+
+                            Learn More
+
+                            <span class="service-card__arrow">
+
+                                →
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                ))
+            }
+
+        </div>
+
+    </div>
+
+</section>

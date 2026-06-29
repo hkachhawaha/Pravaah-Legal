@@ -1,0 +1,86 @@
+---
+const faqs = [
+  {
+    question: "What legal consulting domains do you specialize in?",
+    answer: "We specialize in Business Immigration (visas, PERM, advisory), Corporate Legal Consulting (incorporation, restructuring, transactions), Contract Lifecycle Management (drafting, auditing), Compliance Advisory, and high-leverage Legal Process Outsourcing (LPO)."
+  },
+  {
+    question: "Do you serve international law firms and enterprises?",
+    answer: "Yes, we act as operational extensions and advisory partners for corporate businesses, international law firms, and growth-stage technology startups looking to optimize scaling costs and legal management parameters."
+  },
+  {
+    question: "How do we begin an engagement with Pravaah Legal?",
+    answer: "The process begins with an initial consultation where we scope your operational scaling targets. From there, we formulate a project execution checklist detailing timelines and filings."
+  },
+  {
+    question: "Do you offer compliance audits and risk reviews?",
+    answer: "Absolutely. We build corporate compliance matrices, help draft regulatory risk audits, and configure ongoing corporate governance reviews."
+  }
+];
+---
+
+<section class="faq">
+
+    <div class="container">
+
+        <div class="faq__header text-center">
+
+            <span class="faq__eyebrow">
+
+                FAQ
+
+            </span>
+
+            <h2>
+
+                Frequently Asked Questions
+
+            </h2>
+
+            <p class="faq__subtitle">
+
+                Find quick answers on our operations, legal specialties, LPO structures, and standard consulting processes.
+
+            </p>
+
+        </div>
+
+        <div class="faq__wrapper">
+
+            {
+                faqs.map(faq => (
+
+                    <details class="faq-item glass">
+
+                        <summary class="faq-item__question">
+
+                            {faq.question}
+
+                            <span class="faq-item__icon">
+
+                                +
+
+                            </span>
+
+                        </summary>
+
+                        <div class="faq-item__answer">
+
+                            <p>
+
+                                {faq.answer}
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                ))
+            }
+
+        </div>
+
+    </div>
+
+</section>

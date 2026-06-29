@@ -1,0 +1,166 @@
+---
+const stats = [
+  {
+    number: "500+",
+    label: "Successful Engagements"
+  },
+  {
+    number: "98%",
+    label: "Client Satisfaction"
+  },
+  {
+    number: "15+",
+    label: "Years Experience"
+  }
+];
+---
+
+<section class="hero">
+
+    <div class="hero__background">
+
+        <div class="hero__gradient hero__gradient--one"></div>
+
+        <div class="hero__gradient hero__gradient--two"></div>
+
+        <div class="hero__grid"></div>
+
+    </div>
+
+    <div class="container hero__wrapper">
+
+        <div class="hero__content">
+
+            <span class="hero__eyebrow">
+
+                PREMIUM LEGAL CONSULTING
+
+            </span>
+
+            <h1>
+
+                Guiding Every
+
+                <span>
+
+                    Legal Journey.
+
+                </span>
+
+            </h1>
+
+            <p>
+
+                We help businesses, law firms and global organizations
+                simplify immigration, compliance and corporate legal
+                operations through expert legal consulting.
+
+            </p>
+
+            <div class="hero__actions">
+
+                <a
+                    href="/contact"
+                    class="btn btn-primary">
+
+                    Schedule Consultation
+
+                </a>
+
+                <a
+                    href="/services"
+                    class="btn btn-outline">
+
+                    Explore Services
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero__visual">
+
+            <div class="hero-card hero-card--large">
+
+                <div class="hero-card__header">
+
+                    <span>
+
+                        Corporate Legal
+
+                    </span>
+
+                    <span>
+
+                        Active
+
+                    </span>
+
+                </div>
+
+                <div class="hero-card__body">
+
+                    <h3>
+
+                        Trusted by businesses
+                        navigating complex legal
+                        operations.
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <div class="hero-card hero-card--floating">
+
+                <h3>
+
+                    Immigration
+
+                </h3>
+
+                <p>
+
+                    H-1B • L-1 • O-1 • PERM
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero__stats">
+
+        <div class="container hero__stats-grid">
+
+            {
+                stats.map(stat => (
+
+                    <div class="hero-stat">
+
+                        <h2>
+
+                            {stat.number}
+
+                        </h2>
+
+                        <p>
+
+                            {stat.label}
+
+                        </p>
+
+                    </div>
+
+                ))
+            }
+
+        </div>
+
+    </div>
+
+</section>

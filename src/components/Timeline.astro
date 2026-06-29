@@ -1,0 +1,92 @@
+---
+const steps = [
+  {
+    step: "01",
+    title: "Consultation",
+    description: "Initial alignment call to understand your organization's business scale, constraints, immigration targets, or contract operations requirements."
+  },
+  {
+    step: "02",
+    title: "Strategy Formulation",
+    description: "Our legal consultants draft a custom execution timeline mapping required filings, compliance checklists, or contract automation templates."
+  },
+  {
+    step: "03",
+    title: "Execution & Filing",
+    description: "Dedicated case management experts prepare detailed records, compile case folders, execute contract audits, and coordinate official filings."
+  },
+  {
+    step: "04",
+    title: "Review & Advisory Support",
+    description: "Ongoing regulatory compliance checkups, post-filing audit defense structures, and regular optimization reviews of LPO operations."
+  }
+];
+---
+
+<section class="timeline">
+
+    <div class="container">
+
+        <div class="timeline__header text-center">
+
+            <span class="timeline__eyebrow">
+
+                HOW WE WORK
+
+            </span>
+
+            <h2>
+
+                Systematic Engagement Flow
+
+            </h2>
+
+            <p class="timeline__subtitle">
+
+                A structured operational framework designed to optimize legal consulting delivery from scoping through ongoing compliance audits.
+
+            </p>
+
+        </div>
+
+        <div class="timeline__trail">
+
+            <div class="timeline__line"></div>
+
+            {
+                steps.map((step, index) => (
+
+                    <div class={`timeline__item ${index % 2 === 0 ? "timeline__item--left" : "timeline__item--right"}`}>
+
+                        <div class="timeline__badge">
+
+                            {step.step}
+
+                        </div>
+
+                        <div class="timeline__card glass">
+
+                            <h3>
+
+                                {step.title}
+
+                            </h3>
+
+                            <p>
+
+                                {step.description}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                ))
+            }
+
+        </div>
+
+    </div>
+
+</section>

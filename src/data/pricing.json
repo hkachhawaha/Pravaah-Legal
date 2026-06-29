@@ -1,0 +1,75 @@
+{
+  "plans": [
+    {
+      "name": "Standard Advisory",
+      "price": "$499",
+      "period": "per engagement",
+      "description": "Ideal for startups and growing businesses requiring basic legal consulting or template configurations.",
+      "features": [
+        "1-hour strategic consulting call",
+        "Custom compliance checklist formulation",
+        "2 standard contract templates",
+        "Email support for 15 days"
+      ]
+    },
+    {
+      "name": "Premium Operations",
+      "price": "$1,499",
+      "period": "per month",
+      "description": "Comprehensive corporate legal and LPO support for active businesses and mid-sized entities.",
+      "features": [
+        "10-hours of dedicated consulting hours",
+        "Immigration filing review support",
+        "Contract drafting & lifecycle audits",
+        "LPO paralegal assembly support",
+        "Dedicated case advisor"
+      ],
+      "featured": true
+    },
+    {
+      "name": "Enterprise Leverage",
+      "price": "Custom",
+      "period": "",
+      "description": "Tailored LPO, business immigration plans, and regulatory risk compliance structures for high-scale firms.",
+      "features": [
+        "Unlimited corporate consulting access",
+        "Dedicated remote LPO team configuration",
+        "Custom compliance audits",
+        "Priority H-1B/L-1/PERM case management",
+        "Direct Slack & hotline access"
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "feature": "Consulting Support",
+      "standard": "1 hr",
+      "premium": "10 hrs",
+      "enterprise": "Unlimited"
+    },
+    {
+      "feature": "Contract Audits",
+      "standard": "No",
+      "premium": "Yes",
+      "enterprise": "Yes (Priority)"
+    },
+    {
+      "feature": "Immigration Support",
+      "standard": "No",
+      "premium": "Basic Review",
+      "enterprise": "Full Case Management"
+    },
+    {
+      "feature": "Dedicated LPO Resource",
+      "standard": "No",
+      "premium": "No",
+      "enterprise": "Yes (Dedicated Team)"
+    },
+    {
+      "feature": "Response Time",
+      "standard": "48 hours",
+      "premium": "24 hours",
+      "enterprise": "< 2 hours"
+    }
+  ]
+}

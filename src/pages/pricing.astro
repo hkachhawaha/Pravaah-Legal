@@ -1,0 +1,510 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import pricingData from "@data/pricing.json";
+
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  featured?: boolean;
+}
+
+interface Comparison {
+  feature: string;
+  standard: string;
+  premium: string;
+  enterprise: string;
+}
+
+const plans = pricingData.plans as Plan[];
+const comparison = pricingData.comparison as Comparison[];
+---
+
+<BaseLayout title="Consulting Plans & Pricing | Pravaah Legal" description="View corporate consulting pricing plans, flat packages, comparisons matrix, and enterprise service parameters.">
+
+    <Navbar />
+
+    <main>
+
+        <section class="pricing-hero">
+
+            <div class="container text-center">
+
+                <span class="pricing-hero__eyebrow">TRANSPARENT PRICING</span>
+
+                <h1>Our Pricing & Plans</h1>
+
+                <p class="pricing-hero__subtitle">
+
+                    Flexible models designed to fit operations from growth companies to high-volume law firms.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="pricing-cards">
+
+            <div class="container pricing-grid">
+
+                {
+                    plans.map((plan: Plan) => (
+
+                        <div class={`price-card glass ${plan.featured ? "price-card--featured" : ""}`}>
+
+                            {
+                                plan.featured && (
+
+                                    <div class="price-card__badge">
+
+                                        Most Popular
+
+                                    </div>
+
+                                )
+                            }
+
+                            <h3>
+
+                                {plan.name}
+
+                            </h3>
+
+                            <p class="price-card__desc">
+
+                                {plan.description}
+
+                            </p>
+
+                            <div class="price">
+
+                                {plan.price}
+
+                                {plan.period && (
+
+                                    <span>
+
+                                        / {plan.period}
+
+                                    </span>
+
+                                )}
+
+                            </div>
+
+                            <ul class="price-features">
+
+                                {
+                                    plan.features.map((feat: string) => (
+
+                                        <li>
+
+                                            <i class="fa-solid fa-check text-gold"></i>
+
+                                            {feat}
+
+                                        </li>
+
+                                    ))
+                                }
+
+                            </ul>
+
+                            <a
+                                href="/contact"
+                                class={`btn ${plan.featured ? "btn-primary" : "btn-outline"} price-btn`}>
+
+                                Get Started
+
+                            </a>
+
+                        </div>
+
+                    ))
+                }
+
+            </div>
+
+        </section>
+
+        <section class="comparison">
+
+            <div class="container">
+
+                <h2 class="text-center comparison__title">Compare Plans</h2>
+
+                <div class="table-wrapper">
+
+                    <table class="comparison-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Features</th>
+                                <th>Standard</th>
+                                <th>Premium</th>
+                                <th>Enterprise</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {
+                                comparison.map((item: Comparison) => (
+
+                                    <tr>
+
+                                        <td>
+
+                                            {item.feature}
+
+                                        </td>
+
+                                        <td>
+
+                                            {item.standard}
+
+                                        </td>
+
+                                        <td>
+
+                                            {item.premium}
+
+                                        </td>
+
+                                        <td>
+
+                                            {item.enterprise}
+
+                                        </td>
+
+                                    </tr>
+
+                                ))
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <Footer />
+
+</BaseLayout>
+
+<style lang="scss">
+
+.pricing-hero{
+
+    padding-top:140px;
+
+    padding-bottom:4rem;
+
+}
+
+.pricing-hero__eyebrow{
+
+    color:var(--gold);
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+
+    font-size:.85rem;
+
+}
+
+.pricing-hero h1{
+
+    margin:1rem 0;
+
+}
+
+.pricing-hero__subtitle{
+
+    color:var(--muted);
+
+    font-size:1.15rem;
+
+    max-width:680px;
+
+    margin:auto;
+
+}
+
+.pricing-cards{
+
+    background:var(--surface);
+
+    border-top:1px solid rgba(255,255,255,.04);
+
+}
+
+.pricing-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2.5rem;
+
+    align-items:stretch;
+
+}
+
+.price-card{
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:4rem 3rem;
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:var(--transition);
+
+}
+
+.price-card--featured{
+
+    border-color:var(--gold);
+
+    transform:scale(1.03);
+
+}
+
+.price-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.price-card--featured:hover{
+
+    transform:scale(1.03) translateY(-8px);
+
+}
+
+.price-card__badge{
+
+    position:absolute;
+
+    top:24px;
+
+    right:24px;
+
+    background:rgba(176,141,87,.12);
+
+    color:var(--gold);
+
+    padding:6px 14px;
+
+    border-radius:50px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.price-card h3{
+
+    font-size:1.6rem;
+
+    margin-bottom:1rem;
+
+}
+
+.price-card__desc{
+
+    color:var(--muted);
+
+    font-size:.92rem;
+
+    line-height:1.5;
+
+    margin-bottom:2.5rem;
+
+}
+
+.price{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    font-weight:700;
+
+    margin-bottom:2.5rem;
+
+}
+
+.price span{
+
+    font-size:1rem;
+
+    color:var(--muted);
+
+    font-weight:400;
+
+}
+
+.price-features{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.2rem;
+
+    margin-bottom:3.5rem;
+
+    flex-grow:1;
+
+}
+
+.price-features li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:.95rem;
+
+    color:var(--text);
+
+}
+
+.price-btn{
+
+    width:100%;
+
+}
+
+.comparison{
+
+    background:var(--background);
+
+    padding:8rem 0;
+
+}
+
+.comparison__title{
+
+    margin-bottom:4rem;
+
+}
+
+.table-wrapper{
+
+    overflow-x:auto;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:var(--surface);
+
+}
+
+.comparison-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    text-align:left;
+
+}
+
+.comparison-table th,
+
+.comparison-table td{
+
+    padding:20px 30px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.comparison-table th{
+
+    font-weight:700;
+
+    color:white;
+
+    background:rgba(255,255,255,.01);
+
+}
+
+.comparison-table td{
+
+    color:var(--text);
+
+}
+
+.comparison-table tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+.comparison-table td:not(:first-child){
+
+    color:var(--muted);
+
+}
+
+@media(max-width:992px){
+
+.pricing-grid{
+
+grid-template-columns:1fr;
+
+gap:3rem;
+
+}
+
+.price-card--featured{
+
+transform:none;
+
+}
+
+.price-card--featured:hover{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+</style>

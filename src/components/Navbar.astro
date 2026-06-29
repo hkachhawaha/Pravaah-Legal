@@ -1,0 +1,432 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navigation = [
+  {
+    title: "Home",
+    href: "/"
+  },
+  {
+    title: "Services",
+    href: "/services"
+  },
+  {
+    title: "Pricing",
+    href: "/pricing"
+  },
+  {
+    title: "About",
+    href: "/about"
+  },
+  {
+    title: "Contact",
+    href: "/contact"
+  }
+];
+---
+
+<header class="navbar">
+
+    <div class="container navbar__wrapper">
+
+        <a
+            href="/"
+            class="navbar__logo">
+
+            <span class="navbar__brand">
+
+                PRAVAAH
+
+            </span>
+
+            <span class="navbar__sub">
+
+                Legal Consulting
+
+            </span>
+
+        </a>
+
+        <nav class="navbar__nav">
+
+            <ul>
+
+                {
+                    navigation.map(item => (
+
+                        <li>
+
+                            <a
+                                href={item.href}
+                                class={currentPath === item.href ? "active" : ""}>
+
+                                {item.title}
+
+                            </a>
+
+                        </li>
+
+                    ))
+                }
+
+            </ul>
+
+        </nav>
+
+        <div class="navbar__actions">
+
+            <a
+                href="/contact"
+                class="btn btn-primary">
+
+                Book Consultation
+
+            </a>
+
+        </div>
+
+        <button
+            class="navbar__toggle"
+            aria-label="Toggle Menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+    <div class="mobile-nav">
+
+        <ul>
+
+            {
+                navigation.map(item => (
+
+                    <li>
+
+                        <a
+                            href={item.href}>
+
+                            {item.title}
+
+                        </a>
+
+                    </li>
+
+                ))
+            }
+
+            <li>
+
+                <a
+                    href="/contact"
+                    class="btn btn-primary mobile-btn">
+
+                    Book Consultation
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+<script>
+const navbar = document.querySelector(".navbar");
+const toggle = document.querySelector(".navbar__toggle");
+const mobile = document.querySelector(".mobile-nav");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 40) {
+    navbar?.classList.add("scrolled");
+  } else {
+    navbar?.classList.remove("scrolled");
+  }
+});
+
+toggle?.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  mobile?.classList.toggle("open");
+});
+</script>
+
+<style lang="scss">
+
+.navbar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:999;
+
+transition:.35s;
+
+padding:24px 0;
+
+background:transparent;
+
+}
+
+.navbar.scrolled{
+
+background:rgba(10,10,10,.72);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+padding:18px 0;
+
+}
+
+.navbar__wrapper{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.navbar__logo{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.navbar__brand{
+
+font-size:1.6rem;
+
+font-weight:800;
+
+letter-spacing:.18em;
+
+color:white;
+
+}
+
+.navbar__sub{
+
+font-size:.78rem;
+
+letter-spacing:.22em;
+
+text-transform:uppercase;
+
+color:var(--gold);
+
+margin-top:2px;
+
+}
+
+.navbar__nav ul{
+
+display:flex;
+
+gap:48px;
+
+align-items:center;
+
+}
+
+.navbar__nav a{
+
+position:relative;
+
+font-weight:500;
+
+color:#d9d9d9;
+
+transition:.35s;
+
+}
+
+.navbar__nav a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-8px;
+
+width:0;
+
+height:2px;
+
+background:var(--gold);
+
+transition:.35s;
+
+}
+
+.navbar__nav a:hover{
+
+color:white;
+
+}
+
+.navbar__nav a:hover::after,
+
+.navbar__nav .active::after{
+
+width:100%;
+
+}
+
+.navbar__nav .active{
+
+color:white;
+
+}
+
+.navbar__actions{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+}
+
+.navbar__toggle{
+
+display:none;
+
+background:none;
+
+border:none;
+
+cursor:pointer;
+
+flex-direction:column;
+
+gap:6px;
+
+}
+
+.navbar__toggle span{
+
+width:28px;
+
+height:2px;
+
+background:white;
+
+transition:.35s;
+
+}
+
+.navbar__toggle.active span:nth-child(1){
+
+transform:rotate(45deg) translateY(11px);
+
+}
+
+.navbar__toggle.active span:nth-child(2){
+
+opacity:0;
+
+}
+
+.navbar__toggle.active span:nth-child(3){
+
+transform:rotate(-45deg) translateY(-11px);
+
+}
+
+.mobile-nav{
+
+position:fixed;
+
+top:88px;
+
+right:-100%;
+
+width:320px;
+
+height:calc(100vh - 88px);
+
+background:#111;
+
+padding:40px;
+
+transition:.35s;
+
+border-left:1px solid rgba(255,255,255,.08);
+
+}
+
+.mobile-nav.open{
+
+right:0;
+
+}
+
+.mobile-nav ul{
+
+display:flex;
+
+flex-direction:column;
+
+gap:28px;
+
+}
+
+.mobile-nav a{
+
+font-size:1.1rem;
+
+color:white;
+
+}
+
+.mobile-btn{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+@media(max-width:992px){
+
+.navbar__nav{
+
+display:none;
+
+}
+
+.navbar__actions{
+
+display:none;
+
+}
+
+.navbar__toggle{
+
+display:flex;
+
+}
+
+}
+
+</style>

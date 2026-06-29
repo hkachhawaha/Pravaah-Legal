@@ -1,0 +1,244 @@
+---
+---
+
+<div class="contact-form glass rounded">
+
+    <form id="contactForm" novalidate>
+
+        <div class="form-group">
+
+            <label for="name">Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Himalaya Kachhawaha"
+                required />
+
+            <span class="error-msg" id="nameError">Name is required.</span>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="email">Business Email</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="info@pravaahlegal.com"
+                required />
+
+            <span class="error-msg" id="emailError">Please enter a valid email.</span>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="subject">Subject</label>
+
+            <select id="subject" name="subject" required>
+
+                <option value="">Select Service Area</option>
+                <option value="immigration">Business Immigration</option>
+                <option value="corporate">Corporate Legal Advisory</option>
+                <option value="lpo">Legal Process Outsourcing</option>
+                <option value="contracts">Contract Lifecycle Management</option>
+                <option value="compliance">Compliance & Risk Advisory</option>
+
+            </select>
+
+            <span class="error-msg" id="subjectError">Please select a subject area.</span>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="message">Your Message</label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="How can our legal consulting team assist you?"
+                required></textarea>
+
+            <span class="error-msg" id="messageError">Message cannot be empty.</span>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary form-btn">
+
+            Send Message
+
+        </button>
+
+        <div class="form-status" id="formStatus"></div>
+
+    </form>
+
+</div>
+
+<script>
+const form = document.getElementById("contactForm") as HTMLFormElement | null;
+const nameInput = document.getElementById("name") as HTMLInputElement | null;
+const emailInput = document.getElementById("email") as HTMLInputElement | null;
+const subjectInput = document.getElementById("subject") as HTMLSelectElement | null;
+const messageInput = document.getElementById("message") as HTMLTextAreaElement | null;
+const statusDiv = document.getElementById("formStatus") as HTMLDivElement | null;
+
+form?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let isValid = true;
+
+  // Reset errors
+  document.querySelectorAll(".error-msg").forEach((el) => {
+    el.classList.remove("active");
+  });
+  if (statusDiv) {
+    statusDiv.className = "form-status";
+    statusDiv.textContent = "";
+  }
+
+  // Name Validation
+  if (!nameInput?.value.trim()) {
+    document.getElementById("nameError")?.classList.add("active");
+    isValid = false;
+  }
+
+  // Email Validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailInput || !emailRegex.test(emailInput.value)) {
+    document.getElementById("emailError")?.classList.add("active");
+    isValid = false;
+  }
+
+  // Subject Validation
+  if (!subjectInput?.value) {
+    document.getElementById("subjectError")?.classList.add("active");
+    isValid = false;
+  }
+
+  // Message Validation
+  if (!messageInput?.value.trim()) {
+    document.getElementById("messageError")?.classList.add("active");
+    isValid = false;
+  }
+
+  if (isValid) {
+    if (statusDiv) {
+      statusDiv.classList.add("success");
+      statusDiv.textContent = "Thank you! Your inquiry has been sent to our consulting team.";
+    }
+    form.reset();
+  }
+});
+</script>
+
+<style lang="scss">
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-bottom:1.5rem;
+
+}
+
+label{
+
+    font-weight:600;
+
+    font-size:.95rem;
+
+    color:white;
+
+}
+
+input,
+
+select,
+
+textarea{
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:16px;
+
+    color:white;
+
+    font-size:1rem;
+
+    transition:var(--transition);
+
+}
+
+input:focus,
+
+select:focus,
+
+textarea:focus{
+
+    border-color:var(--gold);
+
+    outline:none;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+.error-msg{
+
+    color:#ff5e5e;
+
+    font-size:.85rem;
+
+    display:none;
+
+}
+
+.error-msg.active{
+
+    display:block;
+
+}
+
+.form-btn{
+
+    width:100%;
+
+    margin-top:1rem;
+
+}
+
+.form-status{
+
+    margin-top:1.5rem;
+
+    font-weight:600;
+
+    font-size:.95rem;
+
+    text-align:center;
+
+}
+
+.form-status.success{
+
+    color:var(--gold);
+
+}
+
+</style>

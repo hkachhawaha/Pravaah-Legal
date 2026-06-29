@@ -1,0 +1,212 @@
+---
+const year = new Date().getFullYear();
+
+const services = [
+  "Business Immigration",
+  "Corporate Legal Advisory",
+  "Legal Process Outsourcing",
+  "Contract Management",
+  "Compliance Consulting"
+];
+
+const links = [
+  { title: "Home", href: "/" },
+  { title: "Services", href: "/services" },
+  { title: "Pricing", href: "/pricing" },
+  { title: "About", href: "/about" },
+  { title: "Contact", href: "/contact" }
+];
+---
+
+<footer class="footer">
+
+    <div class="container">
+
+        <section class="footer__cta">
+
+            <div>
+
+                <span class="footer__eyebrow">
+
+                    LET'S BUILD TOGETHER
+
+                </span>
+
+                <h2>
+
+                    Need a trusted legal consulting partner?
+
+                </h2>
+
+                <p>
+
+                    Helping businesses, law firms and global
+                    organizations navigate legal complexity
+                    with confidence.
+
+                </p>
+
+            </div>
+
+            <a
+                href="/contact"
+                class="btn btn-primary">
+
+                Schedule Consultation
+
+            </a>
+
+        </section>
+
+        <section class="footer__content">
+
+            <div class="footer__brand">
+
+                <h3>
+
+                    PRAVAAH
+
+                </h3>
+
+                <span>
+
+                    Legal Consulting
+
+                </span>
+
+                <p>
+
+                    Immigration, Corporate Legal,
+                    Compliance and Legal Process
+                    Outsourcing for modern businesses.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Company
+
+                </h4>
+
+                <ul>
+
+                    {
+                        links.map(link => (
+
+                            <li>
+
+                                <a href={link.href}>
+
+                                    {link.title}
+
+                                </a>
+
+                            </li>
+
+                        ))
+                    }
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Services
+
+                </h4>
+
+                <ul>
+
+                    {
+                        services.map(service => (
+
+                            <li>
+
+                                {service}
+
+                            </li>
+
+                        ))
+                    }
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Contact
+
+                </h4>
+
+                <ul>
+
+                    <li>
+
+                        Jaipur, Rajasthan
+
+                    </li>
+
+                    <li>
+
+                        info@pravaahlegal.com
+
+                    </li>
+
+                    <li>
+
+                        +91 XXX XXX XXXX
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+        <section class="footer__bottom">
+
+            <p>
+
+                © {year} Pravaah Legal.
+                All rights reserved.
+
+            </p>
+
+            <div class="footer__social">
+
+                <a href="#" aria-label="LinkedIn">
+
+                    LinkedIn
+
+                </a>
+
+                <a href="#" aria-label="Instagram">
+
+                    Instagram
+
+                </a>
+
+                <a href="#" aria-label="X">
+
+                    X
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</footer>

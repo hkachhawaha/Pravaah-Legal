@@ -1,0 +1,289 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navbar from "@components/Navbar.astro";
+import CTA from "@components/CTA.astro";
+import Footer from "@components/Footer.astro";
+import servicesData from "@data/services.json";
+
+interface Service {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  subservices: string[];
+}
+
+const services = servicesData as Service[];
+---
+
+<BaseLayout title="Legal Services | Pravaah Legal Consulting" description="Explore corporate advisory, business immigration programs, LPO legal operations, contract structures, and regulatory compliances.">
+
+    <Navbar />
+
+    <main>
+
+        <section class="services-hero">
+
+            <div class="container text-center">
+
+                <span class="services-hero__eyebrow">OUR SPECIALIZATION</span>
+
+                <h1>Expert Legal Services</h1>
+
+                <p class="services-hero__subtitle">
+
+                    We deliver high-leverage compliance parameters, operations support, and strategic legal consulting for businesses.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="services-list">
+
+            <div class="container">
+
+                <div class="services-list__wrapper">
+
+                    {
+                        services.map((service: Service) => (
+
+                            <div class="service-detail glass rounded" id={service.id}>
+
+                                <div class="service-detail__header">
+
+                                    <div class="service-detail__icon">
+
+                                        <i class={service.icon}></i>
+
+                                    </div>
+
+                                    <h2>
+
+                                        {service.title}
+
+                                    </h2>
+
+                                </div>
+
+                                <p class="service-detail__desc">
+
+                                    {service.description}
+
+                                </p>
+
+                                <div class="service-detail__body">
+
+                                    <h4>Key Offerings</h4>
+
+                                    <ul class="service-detail__list">
+
+                                        {
+                                            service.subservices.map((sub: string) => (
+
+                                                <li>
+
+                                                    <i class="fa-solid fa-circle-check text-gold"></i>
+
+                                                    {sub}
+
+                                                </li>
+
+                                            ))
+                                        }
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        ))
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <CTA />
+
+    </main>
+
+    <Footer />
+
+</BaseLayout>
+
+<style lang="scss">
+
+.services-hero{
+
+    padding-top:140px;
+
+    padding-bottom:4rem;
+
+}
+
+.services-hero__eyebrow{
+
+    color:var(--gold);
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+
+    font-size:.85rem;
+
+}
+
+.services-hero h1{
+
+    margin:1rem 0;
+
+}
+
+.services-hero__subtitle{
+
+    color:var(--muted);
+
+    font-size:1.15rem;
+
+    max-width:680px;
+
+    margin:auto;
+
+}
+
+.services-list{
+
+    background:var(--surface);
+
+    border-top:1px solid rgba(255,255,255,.04);
+
+}
+
+.services-list__wrapper{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4rem;
+
+}
+
+.service-detail{
+
+    padding:4rem;
+
+    border:1px solid var(--border);
+
+}
+
+.service-detail__header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.5rem;
+
+    margin-bottom:1.5rem;
+
+}
+
+.service-detail__icon{
+
+    background:rgba(176,141,87,.08);
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.service-detail__icon i{
+
+    color:var(--gold);
+
+    font-size:1.6rem;
+
+}
+
+.service-detail h2{
+
+    font-size:2rem;
+
+}
+
+.service-detail__desc{
+
+    color:var(--text);
+
+    font-size:1.1rem;
+
+    margin-bottom:2.5rem;
+
+    max-width:800px;
+
+}
+
+.service-detail__body h4{
+
+    font-size:1.2rem;
+
+    margin-bottom:1.5rem;
+
+}
+
+.service-detail__list{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1.2rem 3rem;
+
+}
+
+.service-detail__list li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--muted);
+
+    font-size:.98rem;
+
+}
+
+@media(max-width:768px){
+
+.service-detail{
+
+padding:2.5rem 1.5rem;
+
+}
+
+.service-detail__list{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>

@@ -1,0 +1,136 @@
+.contact {
+  background: var(--background);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info h2 {
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.info-card:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.info-card__icon {
+  background: rgba(176, 141, 87, 0.08);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-card__icon i {
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+.info-card__content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-card__content p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.contact-form-wrapper {
+  position: relative;
+}
+
+.contact-form-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(176, 141, 87, 0.06), transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.contact-form {
+  padding: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.map-placeholder {
+  height: 350px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-light);
+  overflow: hidden;
+  margin-top: 4rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-placeholder__overlay {
+  text-align: center;
+  z-index: 2;
+}
+
+.map-placeholder__overlay i {
+  font-size: 3rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.map-placeholder__overlay h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-placeholder__overlay p {
+  color: var(--muted);
+}
+
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "immigration",
+    "title": "Business Immigration",
+    "icon": "fa-solid fa-plane-departure",
+    "description": "Premium global mobility consulting and filing operations for companies and law firms.",
+    "subservices": [
+      "H-1B Specialty Occupation Visas",
+      "L-1 Intracompany Transferee Visas",
+      "O-1 Extraordinary Ability Visas",
+      "PERM Labor Certification Processing",
+      "Green Card and Adjustment of Status cases"
+    ]
+  },
+  {
+    "id": "corporate",
+    "title": "Corporate Legal Advisory",
+    "icon": "fa-solid fa-briefcase",
+    "description": "Comprehensive consulting for corporate governance, incorporation, and company transaction compliance.",
+    "subservices": [
+      "Business Entity Formations & Registration",
+      "Corporate Structuring & Board Governance",
+      "Drafting Bylaws, Resolution Sheets & Minutes",
+      "Mergers & Acquisitions Due Diligence Support",
+      "Venture Capital and Startup Structuring"
+    ]
+  },
+  {
+    "id": "lpo",
+    "title": "Legal Process Outsourcing (LPO)",
+    "icon": "fa-solid fa-gears",
+    "description": "Cost-effective, high-leverage paralegal assistance and case processing workflows.",
+    "subservices": [
+      "Document Review & Systematic Data Entry",
+      "Acrobat & Case Management Case Assembly",
+      "Public Record Search and Retrieval",
+      "Statutory Filings Preparation",
+      "Bilingual Legal Document Processing"
+    ]
+  },
+  {
+    "id": "contracts",
+    "title": "Contract Lifecycle Management",
+    "icon": "fa-solid fa-file-signature",
+    "description": "Strategic contract drafting, negotiation sheets, and lifecycle risk compliance checks.",
+    "subservices": [
+      "Master Services Agreements (MSA) Drafting",
+      "Non-Disclosure Agreements (NDA) Review",
+      "Vendor and Partner Agreement Audits",
+      "Contract Lifecycle Risk Assessments",
+      "Standard Template Library Configurations"
+    ]
+  },
+  {
+    "id": "compliance",
+    "title": "Compliance & Risk Advisory",
+    "icon": "fa-solid fa-shield-halved",
+    "description": "Systematic compliance matrix drafting, auditing, and corporate regulatory mapping.",
+    "subservices": [
+      "Regulatory Risk Assessments & Audits",
+      "Data Privacy and GDPR Alignment Matrices",
+      "Anti-Money Laundering (AML) Compliance Sheets",
+      "Corporate Integrity Agreement Management",
+      "Ongoing Compliance Auditing & Support"
+    ]
+  }
+]
